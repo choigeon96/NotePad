@@ -91,7 +91,6 @@ namespace NotePad1007
                     sw.Flush();
                 }
                 dirty = true;
-                editingFileName = fileName;
                 UpdateText();
             }
             catch(Exception err)
@@ -102,11 +101,15 @@ namespace NotePad1007
         }
         private void 다른이름으로저장ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            saveFileDialog1.Filter = "txt files(*.txt)|*.txt|All Files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 1;
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                editingFileName = saveFileDialog1.FileName;
                 SaveFile(saveFileDialog1.FileName);
             }
         }
+
     }                                                                              
 }                                                                                  
                                                                                    
